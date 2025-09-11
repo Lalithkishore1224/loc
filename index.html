@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch Store</title>
+</head>
+<body>
+  <h1>Welcome to the Watch Store</h1>
+  <button id="getLocationBtn">Send My Location</button>
+
+  <script>
+    const backendURL = "https://bakend-pvma.onrender.com/";
+
+
+    document.getElementById("getLocationBtn").addEventListener("click", () => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const data = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              accuracy: position.coords.accuracy
+            };
+            fetch(backendURL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(res => alert(res.message))
+            .catch(err => console.error(err));
+          },
+          (err) => alert("Error getting location: " + err.message),
+          { enableHighAccuracy: true }
+        );
+      } else {
+        alert("Geolocation is not supported on this device");
+      }
+    });
+  </script>
+</body>
+</html>
