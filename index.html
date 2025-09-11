@@ -1,44 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Watch Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrono - Timeless Precision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #D4AF37; /* Gold */
+            --secondary-color: #1a1a1a; /* Darker charcoal */
+            --background-color: #121212; /* Dark Charcoal */
+            --text-color: #EAEAEA;
+            --subtle-text-color: #A0A0A0;
+            --section-spacing: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            gap: 4rem;
+            padding: 8rem 0 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--primary-color), #f8e092);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--subtle-text-color);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary-color);
+            color: var(--background-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0px 15px 30px rgba(0, 0, 0, 0.6));
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .hero-bg-circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.1;
+            z-index: 1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        #status-message {
+            margin-top: 2rem;
+            padding: 1.2rem;
+            border-left: 4px solid var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+            color: var(--subtle-text-color);
+            min-height: 20px;
+            transition: all 0.5s ease;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--section-spacing) 0;
+            background-color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--subtle-text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--subtle-text-color);
+        }
+
+        /* Collections Section */
+        .collections {
+            padding: var(--section-spacing) 0;
+        }
+
+        .watch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .watch-card {
+            background: var(--secondary-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .watch-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .watch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .watch-card:hover .watch-image img {
+            transform: scale(1.1);
+        }
+
+        .watch-details {
+            padding: 1.5rem;
+        }
+
+        .watch-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .watch-details p {
+            color: var(--subtle-text-color);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Boutiques Section */
+        .boutiques {
+            padding: var(--section-spacing) 0;
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--subtle-text-color);
+            margin-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            color: var(--background-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--subtle-text-color);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.05); opacity: 0.15; }
+            100% { transform: scale(1); opacity: 0.1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 10rem 0 4rem;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-image {
+                margin-top: 4rem;
+            }
+            
+            nav a {
+                margin-left: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            header {
+                padding: 1.5rem 0;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome to the Watch Store</h1>
-  <button id="getLocationBtn">Send My Location</button>
 
-  <script>
-    const backendURL = "https://bakend-pvma.onrender.com/location";
+    <header class="container">
+        <a href="#" class="logo"><i class="fas fa-crown"></i>CHRONO</a>
+        <nav>
+            <a href="#">Collections</a>
+            <a href="#">Boutiques</a>
+            <a href="#">Our World</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Crafted for the Moments That Matter.</h1>
+                <p>Experience the pinnacle of Swiss horology. Each timepiece is a testament to a legacy of precision and unparalleled style.</p>
+                <a href="#" class="cta-button">Explore Collection</a>
+                <div id="status-message">
+                    <span class="loader"></span> Detecting your location for personalized service...
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-bg-circle"></div>
+                <img src="https://images.unsplash.com/photo-1619134731321-97839f37c69a?q=80&w=1374&auto=format&fit=crop" alt="A luxury Chrono watch">
+            </div>
+        </section>
 
-    document.getElementById("getLocationBtn").addEventListener("click", () => {
-      if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const data = {
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-              accuracy: position.coords.accuracy
-            };
-            fetch(backendURL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(data)
-            })
-            .then(res => res.json())
-            .then(res => alert(res.message))
-            .catch(err => console.error(err));
-          },
-          (err) => alert("Error getting location: " + err.message),
-          { enableHighAccuracy: true }
-        );
-      } else {
-        alert("Geolocation is not supported on this device");
-      }
-    });
-  </script>
+        <section class="features">
+            <div class="section-title">
+                <h2>Exceptional Craftsmanship</h2>
+                <p>Discover what makes our timepieces truly extraordinary</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Precious Materials</h3>
+                    <p>Each component is crafted from the finest materials, sourced ethically from around the world.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Artisan Engineering</h3>
+                    <p>Our master watchmakers dedicate hundreds of hours to perfecting each timepiece.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Lifetime Warranty</h3>
+                    <p>Your Chrono timepiece is protected by our comprehensive lifetime warranty.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="collections">
+            <div class="section-title">
+                <h2>Signature Collections</h2>
+                <p>Explore our most iconic timepiece families</p>
+            </div>
+            <div class="watch-grid">
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f821aeddc2e4?q=80&w=1390&auto=format&fit=crop" alt="Heritage Collection">
+                    </div>
+                    <div class="watch-details">
+                        <h3>Heritage Collection</h3>
+                        <p>Timeless designs inspired by our rich history</p>
+                        <span class="price">From $8,500</span>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="https://images.unsplash.com/photo-1547996160-81dfc12a4688?q=80&w=1374&auto=format&fit=crop" alt="Modernist Collection">
+                    </div>
+                    <div class="watch-details">
+                        <h3>Modernist Collection</h3>
+                        <p>Contemporary designs for the discerning individual</p>
+                        <span class="price">From $12,000</span>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?q=80&w=1380&auto=format&fit=crop" alt="Limited Edition">
+                    </div>
+                    <div class="watch-details">
+                        <h3>Limited Edition</h3>
+                        <p>Exclusive timepieces for collectors</p>
+                        <span class="price">From $25,000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="boutiques">
+            <div class="section-title">
+                <h2>Global Boutiques</h2>
+                <p>Visit our exclusive locations worldwide</p>
+            </div>
+            <div id="boutique-locations">
+                <!-- This will be populated based on user location -->
+                <div id="location-based-content">
+                    <p>We're finding the nearest boutique for you...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CHRONO</h3>
+                    <p>Crafting exceptional timepieces since 1875. Each watch tells a story of precision, heritage, and unparalleled craftsmanship.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <a href="#">Collections</a>
+                    <a href="#">Boutiques</a>
+                    <a href="#">Our Heritage</a>
+                    <a href="#">Care Guide</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <a href="#">Client Service</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <p>Subscribe to our newsletter for exclusive updates</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CHRONO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const backendURL = "https://bakend-pvma.onrender.com/location";
+        const statusElement = document.getElementById("status-message");
+        const locationContent = document.getElementById("location-based-content");
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // This function runs automatically when the page loads
+        function getAndSendLocation() {
+            if ("geolocation" in navigator) {
+                statusElement.innerHTML = '<span class="loader"></span> Requesting your location for a personalized experience...';
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        statusElement.innerHTML = '<span class="loader"></span> Location received. Finding nearest boutique...';
+                        const data = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            accuracy: position.coords.accuracy
+                        };
+
+                        fetch(backendURL, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(data)
+                        })
+                        .then(res => res.json())
+                        .then(res => {
+                            statusElement.textContent = res.message || "We've found the perfect boutique near you!";
+                            
+                            // Update the boutique section with location-based content
+                            locationContent.innerHTML = `
+                                <h3>Boutiques near you</h3>
+                                <p>Based on your location, we recommend visiting our flagship store:</p>
+                                <div class="feature-card">
+                                    <h4>CHRONO Flagship Store</h4>
+                                    <p>123 Luxury Avenue, Premium District</p>
+                                    <p>Open today: 10:00 AM - 8:00 PM</p>
+                                    <a href="#" class="cta-button" style="padding: 10px 25px;">Get Directions</a>
+                                </div>
+                            `;
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            statusElement.textContent = "Could not connect to the server. Showing all boutiques.";
+                            showAllBoutiques();
+                        });
+                    },
+                    (err) => {
+                        let message = "";
+                        switch(err.code) {
+                            case err.PERMISSION_DENIED:
+                                message = "Location access was denied. Showing all boutiques.";
+                                break;
+                            case err.POSITION_UNAVAILABLE:
+                                message = "Location information is unavailable. Showing all boutiques.";
+                                break;
+                            case err.TIMEOUT:
+                                message = "The request to get user location timed out. Showing all boutiques.";
+                                break;
+                            default:
+                                message = "An unknown error occurred. Showing all boutiques.";
+                                break;
+                        }
+                        statusElement.textContent = message;
+                        showAllBoutiques();
+                    },
+                    { 
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                statusElement.textContent = "Geolocation is not supported by your browser. Showing all boutiques.";
+                showAllBoutiques();
+            }
+        }
+
+        function showAllBoutiques() {
+            locationContent.innerHTML = `
+                <h3>Our Global Boutiques</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>New York Flagship</h4>
+                        <p>5th Avenue, New York</p>
+                        <p>+1 212-555-7890</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Paris Boutique</h4>
+                        <p>Place Vendôme, Paris</p>
+                        <p>+33 1 42 86 53 24</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Tokyo Gallery</h4>
+                        <p>Ginza District, Tokyo</p>
+                        <p>+81 3 3573 3751</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Call the function as soon as the window is loaded
+        window.onload = getAndSendLocation;
+    </script>
+
 </body>
 </html>
-
